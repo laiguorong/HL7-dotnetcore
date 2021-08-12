@@ -2,25 +2,27 @@
   <PropertyGroup>
     <Description>Lightweight HL7 2.x library compatible with .Net Standard and .Net Core</Description>
     <Copyright>(c) Efferent Health, LLC</Copyright>
-    <VersionPrefix>2.26.0</VersionPrefix>
-    <TargetFrameworks>netstandard1.3;netstandard1.6;netstandard2.0</TargetFrameworks>
-    <AssemblyName>HL7-dotnetcore</AssemblyName>
-    <PackageId>HL7-dotnetcore</PackageId>
+    <VersionPrefix>2.26.1</VersionPrefix>
+    <TargetFrameworks>netstandard1.3;netstandard1.6;netstandard2.0;net40;net45;net46;net461</TargetFrameworks>
+    <AssemblyName>RongInfo.HL7-dotnetcore</AssemblyName>
+    <PackageId>RongInfo.HL7-dotnetcore</PackageId>
     <PackageTags>hl7;dotnetcore</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Efferent-Health/HL7-dotnetcore</RepositoryUrl>
+    <RepositoryUrl>https://github.com/laiguorong/HL7-dotnetcore</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageTags>hl7 dotnetcore hl7-parser hl7-writer</PackageTags>
-    <PackageProjectUrl>https://github.com/Efferent-Health/HL7-dotnetcore</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/laiguorong/HL7-dotnetcore</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Efferent-Health/HL7-dotnetcore</RepositoryUrl>
+    <RepositoryUrl>https://github.com/laiguorong/HL7-dotnetcore</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>HL7-dotnetcore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Runtime" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
-    <PackageReference Include="System.Linq" Version="4.3.0" />
-    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.0" />
+    <PackageReference Update="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ namespace HL7.Dotnetcore.Test
     {
         private string HL7_ORM;
         private string HL7_ADT;
+        private string HL7_HEX;
 
         public static void Main(string[] args)
         {
@@ -23,6 +24,7 @@ namespace HL7.Dotnetcore.Test
             var path = Path.GetDirectoryName(typeof(HL7Test).GetTypeInfo().Assembly.Location) + "/";
             this.HL7_ORM = File.ReadAllText(path + "Sample-ORM.txt");
             this.HL7_ADT = File.ReadAllText(path + "Sample-ADT.txt");
+            this.HL7_HEX = File.ReadAllText(path + "Sample-HEX.txt");
         }
 
         [TestMethod]
@@ -53,6 +55,21 @@ namespace HL7.Dotnetcore.Test
             Assert.IsTrue(isParsed);
         }
 
+        [TestMethod]
+        public void ParseTest3()
+        {
+            string hexString = this.HL7_HEX.Replace(" ", "");
+            if ((hexString.Length % 2) != 0)
+                hexString += " ";
+            byte[] data = new byte[hexString.Length / 2];
+            for (int i = 0; i < data.Length; i++)
+                data[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+
+            var message = new Message(data);
+
+            var isParsed = message.ParseMessage();
+            Assert.IsTrue(isParsed);
+        }
 
         [TestMethod]
         public void ReadSegmentTest()

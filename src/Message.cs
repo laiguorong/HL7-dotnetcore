@@ -27,6 +27,41 @@ namespace HL7.Dotnetcore
         {
         }
 
+        public Message(byte[] aryMessage)
+        {
+            if (aryMessage.Length < 3)
+            {
+                throw new HL7Exception("Message Length too short: " + aryMessage.Length + " bytes.", HL7Exception.BAD_MESSAGE);
+            }
+
+            int startIndex = 0;
+            int length = aryMessage.Length;
+
+            for (int i = 0; i < aryMessage.Length; i++)
+            {
+                if (aryMessage[i] == 0x0B)
+                {
+                    startIndex = i + 1;
+                    length -= startIndex;
+                    break;
+                }
+            }
+
+            for (int i = aryMessage.Length - 1; i >= 0; i--)
+            {
+                if (aryMessage[i] == 0x1C)
+                {
+                    length -= aryMessage.Length - i;
+                    break;
+                }
+            }
+
+            byte[] data = new byte[length];
+            Array.Copy(aryMessage, startIndex, data, 0, length);
+
+            HL7Message = System.Text.Encoding.UTF8.GetString(data);
+        }
+
         public Message(string strMessage)
         {
             HL7Message = strMessage;

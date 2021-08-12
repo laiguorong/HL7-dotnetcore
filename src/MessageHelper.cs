@@ -84,9 +84,10 @@ namespace HL7.Dotnetcore
             {
                 if (throwExeption)
                     throw;
-
-                return null;
             }
+
+            offset = TimeSpan.Zero;
+            return null;
         }
 
         /// <summary>
