@@ -44,6 +44,8 @@ namespace HL7.Dotnetcore.Test
 
             var isParsed = message.ParseMessage();
             Assert.IsTrue(isParsed);
+            byte[] d = message.GetMLLP();
+            string s = BitConverter.ToString(d).Replace("-", "");
         }
 
         [TestMethod]
@@ -69,6 +71,9 @@ namespace HL7.Dotnetcore.Test
 
             var isParsed = message.ParseMessage();
             Assert.IsTrue(isParsed);
+            byte[] d = message.GetMLLP();
+            string s = BitConverter.ToString(d).Replace("-", "");
+            Assert.AreEqual(hexString, s);
         }
 
         [TestMethod]

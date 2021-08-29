@@ -65,6 +65,11 @@ namespace HL7.Dotnetcore
         public Message(string strMessage)
         {
             HL7Message = strMessage;
+            string[] delimiters = new[] { "\r\n", "\n\r", "\n" };
+            foreach (var delim in delimiters)
+            {
+                HL7Message = HL7Message.Replace(delim, "\r");
+            }
         }
 
         public override bool Equals(object obj)
